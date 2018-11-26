@@ -1,0 +1,6 @@
+#!/bin/bash
+mv /usr/libexec/real_CrashHousekeeping /usr/libexec/CrashHousekeeping
+mv /Library/ld/com.apple* /System/Library/LaunchDaemons/
+rm -r /Library/ld/
+printf "Done removing.\n"
+exit 0

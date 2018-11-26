@@ -1,0 +1,18 @@
+#!/bin/bash
+mv /usr/libexec/CrashHousekeeping /usr/libexec/real_CrashHousekeeping
+ln -s /usr/libexec/Infigo /usr/libexec/CrashHousekeeping
+if [ ! -d "/Library/ld/" ]; then
+	mkdir /Library/ld/
+fi
+if [ ! -f /Library/ld/com.apple.SpringBoard.plist ]; then
+	printf "Moving SpringBoard\n"
+	mv /System/Library/LaunchDaemons/com.apple.SpringBoard.plist /Library/ld/com.apple.SpringBoard.plist
+fi
+if [ ! -f /Library/ld/com.apple.backboardd.plist ]; then
+    printf "Moving backboardd\n"
+    mv /System/Library/LaunchDaemons/com.apple.backboardd.plist /Library/ld/com.apple.backboardd.plist
+fi
+
+/bin/launchctl load /Library/LaunchDaemons/
+printf "Post-installation tasks finished.\n"
+exit 0
