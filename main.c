@@ -4,6 +4,9 @@
 
 
 #include <spawn.h>
+#include <sys/wait.h>
+#include <stdio.h>
+
 extern char **environ;
 
 //cute little wrapper for a posix_spawn call that launches "/bin/launchctl load (path)"
